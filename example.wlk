@@ -28,9 +28,9 @@ object sarahConnor{
 	var vehiculo= moto
 	var pesoSarah= 0
 	method pesoSarahConVehiculo(){
-		return pesoSarah + pesoVehiculo
+		return pesoSarah + vehiculo.peso()
 	}
-	method vehiculo_(vehiculo){
+	method vehiculo(_vehiculo){
 		vehiculo=_vehiculo
 	}
 	method pesoSarah_(_pesoSarah){
@@ -56,19 +56,19 @@ object camion{
 	method peso(){
 		return peso + peso*cantidadDeAcoplados
 	}
-	method cantidadDeAcoplados(_cantidadeAcoplados){
+	method cantidadDeAcoplados(_cantidadDeAcoplados){
          cantidadDeAcoplados = _cantidadDeAcoplados
 	}
 	
 }
 
 object paquete{
-	var estáPago= True
-	method estáPago(){
-		return estáPago
+	var estaPago= true
+	method estaPago(){
+		return estaPago
 	}
-	method estáPago_(_estáPago){
-		estáPago= _estáPago
+	method estaPago_(_estaPago){
+		estaPago= _estaPago
 	}
 }
 
@@ -80,13 +80,13 @@ object puenteDeBrookling{
 
 object matrix{
 	method puedePasar(mensajero){
-		return mensajero.puedeLlamar == true
+		return mensajero.puedeLlamar() 
 	}
 }
 
 object empresa{
 
 	method elPaquete_puedeSerEntregadoPor_En_(paquete, mensajero, destino){
-		return (paquete.estáPago() && mensajero.puedeLlamar() && mensajero.puedePasar(mensajero)
+		return (paquete.estaPago() && mensajero.puedeLlamar() && mensajero.puedePasar(mensajero))
 	}
 }
