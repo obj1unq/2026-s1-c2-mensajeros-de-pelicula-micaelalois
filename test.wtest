@@ -1,0 +1,31 @@
+import example.*
+
+describe "Casos de entregas"{
+    test "El paquete de George que no está pago no puede ser llevado por Neo a la matrix"{
+        paquete.estaPago(false)
+        assert.notThat(paquete.paquetePuedeSerEntregadoPorEn(neo, matrix))
+    }
+    test "El paquete de George que sí está pago puede ser llevado por Jean a la matrix"{
+        paquete.estaPago(true)
+        assert.that(paquete.paquetePuedeSerEntregadoPorEn(jeanGray, matrix))
+        paquete.estaPago(true)
+    }
+
+    test "El paquete de George que sí está pago no puede ser llevado por Sara (que pesa 70kg) a Brooklyn si es que utiliza un camión con un acoplado"{
+        sarahConnor.pesoSarah(70)
+        sarahConnor.cambiarVehiculo(camion)
+        camion.cantidadDeAcoplados(1)
+        assert.notThat(paquete.paquetePuedeSerEntregadoPorEn(sarahConnor, puenteDeBrookling))
+    }
+    test "La entrega anterior puede hacerse si Sara usa una moto"{
+        sarahConnor.pesoSarah(70)
+        sarahConnor.cambiarVehiculo(moto)
+        assert.that(paquete.paquetePuedeSerEntregadoPorEn(sarahConnor, puenteDeBrookling))
+
+    }
+}
+
+
+
+
+

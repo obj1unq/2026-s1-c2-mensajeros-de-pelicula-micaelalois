@@ -1,5 +1,3 @@
-//MODELAMOS LOS EMPLEADOS//
-
 object jeanGray{
 	method peso(){
 		return 65
@@ -11,7 +9,6 @@ object jeanGray{
 
 object neo{
 	var puedeLlamar = true
-
 	method peso(){
 		return 0
 	}
@@ -19,7 +16,7 @@ object neo{
 		return puedeLlamar
 	}
 	//SETTER
-    method puedeLlamar_(_puedeLlamar){
+    method puedeLlamar(_puedeLlamar){
 		puedeLlamar= _puedeLlamar
 	}
 }
@@ -27,19 +24,19 @@ object neo{
 object sarahConnor{
 	var vehiculo= moto
 	var pesoSarah= 0
-	method pesoSarahConVehiculo(){
+	method peso(){
 		return pesoSarah + vehiculo.peso()
 	}
 	method vehiculo(_vehiculo){
 		vehiculo=_vehiculo
 	}
-	method pesoSarah_(_pesoSarah){
+	method pesoSarah(_pesoSarah){
 		pesoSarah = _pesoSarah
 	}
-	method puedeLlamar(){
+	method puedeHacerLlamada(){
 		return false 
 	}
-	method cambiarVehiculo_(_vehiculo){
+	method cambiarVehiculo(_vehiculo){
 		vehiculo = _vehiculo
 	}
 }
@@ -51,24 +48,29 @@ object moto{
 }
 
 object camion{
-	const peso = 500
+	const pesoCamion = 500
     var cantidadDeAcoplados = 0
 	method peso(){
-		return peso + peso*cantidadDeAcoplados
+		return pesoCamion + pesoCamion*cantidadDeAcoplados
 	}
 	method cantidadDeAcoplados(_cantidadDeAcoplados){
          cantidadDeAcoplados = _cantidadDeAcoplados
 	}
-	
+
 }
 
 object paquete{
 	var estaPago= true
+    method paquetePuedeSerEntregadoPorEn(mensajero, destino){
+       return  estaPago && destino.puedePasar(mensajero)
+     
+    }
+    
 	method estaPago(){
 		return estaPago
 	}
-	method estaPago_(_estaPago){
-		estaPago= _estaPago
+	method estaPago(_estaPago){
+		estaPago = _estaPago
 	}
 }
 
@@ -80,13 +82,7 @@ object puenteDeBrookling{
 
 object matrix{
 	method puedePasar(mensajero){
-		return mensajero.puedeLlamar() 
+		return mensajero.puedeHacerLlamada() 
 	}
 }
 
-object empresa{
-
-	method elPaquete_puedeSerEntregadoPor_En_(paquete, mensajero, destino){
-		return (paquete.estaPago() && mensajero.puedeLlamar() && mensajero.puedePasar(mensajero))
-	}
-}
